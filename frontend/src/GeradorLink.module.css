@@ -65,7 +65,7 @@ label {
 }
 
 .buttonPrepar{
-  height: 30px;
+  height: 40px;
   margin-bottom:20px; 
 
   border: none;
@@ -73,6 +73,8 @@ label {
     
   color: aliceblue;
   background-color: #059669;
+
+  cursor: pointer;
 }
 
 .logoText{
