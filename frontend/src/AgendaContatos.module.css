@@ -1,0 +1,70 @@
+.containerBox {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 24px;
+  }
+  
+  .tittle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  
+  .doc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  .buttonPrepar {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #2cc94e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .listaContatos {
+    margin-top: 24px;
+  }
+  
+  .cardContato {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding: 10px 0;
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .acoes button {
+    margin-left: 8px;
+    padding: 6px 10px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  
+  .deletar {
+    color: red;
+    border-color: red;
+  }
+  

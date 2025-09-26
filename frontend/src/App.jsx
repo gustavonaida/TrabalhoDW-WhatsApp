@@ -1,5 +1,6 @@
 import "./App.css";
 import GeradorLink from "./GeradorLink";
+import AgendaContatos from "./AgendaContatos";
 
 function App() {
   return (
@@ -7,6 +8,8 @@ function App() {
     
       <div className="Container">
         <GeradorLink />
+        <AgendaContatos />
+        
       </div>
     </>
   );
