@@ -36,9 +36,7 @@ export default function GeradorLink() {
 
   return (
     <>
-      <div className={styles.topBar}>
-        <h1 className={styles.logoText}>WhatsHub</h1>
-      </div>
+     
       <div className={styles.containerBox}>
         <h2 className={styles.tittle}> Gerador De Link</h2>
         <div className={styles.doc}>

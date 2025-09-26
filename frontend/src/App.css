@@ -18,15 +18,14 @@
   justify-content: center;
 }
 
-.topBar {
-  width: 100%;
-  text-align: center;
-  padding: 25px 0;
-  background: transparent; 
-  position: fixed;
-  top: 0;
-  left: 0;
+.ContainerBoxes {
+  width: 90vw;
+
+  display: flex;
+  justify-content: space-around;
 }
+
+
 
 .logoText {
   font-size: 2.5rem;

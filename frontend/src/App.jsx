@@ -5,11 +5,14 @@ import AgendaContatos from "./AgendaContatos";
 function App() {
   return (
     <>
+
     
       <div className="Container">
-        <GeradorLink />
-        <AgendaContatos />
-        
+          <h1 className="Logo">WhatsHub</h1>
+        <div className="ContainerBoxes">
+          <GeradorLink />
+          <AgendaContatos />
+        </div>
       </div>
     </>
   );
