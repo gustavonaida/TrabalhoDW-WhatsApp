@@ -8,7 +8,6 @@ function App() {
 
     
       <div className="Container">
-          <h1 className="Logo">WhatsHub</h1>
         <div className="ContainerBoxes">
           <GeradorLink />
           <AgendaContatos />

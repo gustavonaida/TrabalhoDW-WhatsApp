@@ -1,6 +1,5 @@
 import styles from "./GeradorLink.module.css";
-import LinkGerado from "./LinkGerado.jsx"
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function GeradorLink() {
 
@@ -34,6 +33,16 @@ export default function GeradorLink() {
     setTelefone(number1);
   };
 
+  //--------------- Geração de Link ---------------------------
+  const [link,setLink] = useState("")
+
+  const generateLink = () => {
+    if(!telefone){
+      alert("Adicione um número de telefone")
+      return  
+    }
+  }
+
   return (
     <>
      
@@ -56,7 +65,6 @@ export default function GeradorLink() {
           <button className={styles.buttonPrepar}>Preparar Mensagem</button>
         </div>
         <div className={styles.containerLinkGerado}>
-          <LinkGerado />
         </div>
       </div>
     </>
