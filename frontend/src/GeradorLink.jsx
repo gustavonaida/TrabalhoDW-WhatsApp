@@ -1,12 +1,12 @@
 import styles from "./GeradorLink.module.css";
 import React, { useState } from "react";
+import { BookCopy, MessageCircle } from "lucide-react";
 
 export default function GeradorLink() {
-
   //-------------- Formatação: Telefone ------------------------
-  const [telefone, setTelefone] = useState("")
+  const [telephone, setTelephone] = useState("");
 
-  const formatInputTelefone = (valor_digitado) => {
+  const formatInputTelephone = (valor_digitado) => {
     const number = valor_digitado.replace(/\D/g, "").slice(0, 11);
 
     const qtdCaracteres = number.length;
@@ -27,44 +27,119 @@ export default function GeradorLink() {
     return formatNumber;
   };
 
-  const handlesTelefone = (e) => {
+  const handlesTelephone = (e) => {
     const value = e.target.value;
     const number1 = value.replace(/\D/g, "");
-    setTelefone(number1);
+    setTelephone(number1);
   };
 
   //--------------- Geração de Link ---------------------------
-  const [link,setLink] = useState("")
+  const [link, setLink] = useState("");
+  const [menssage, setMenssage] = useState("");
 
   const generateLink = () => {
-    if(!telefone){
-      alert("Adicione um número de telefone")
-      return  
+    if (!telephone) {
+      alert("Adicione um número de telefone");
+      return;
     }
-  }
+
+    const local_Number_DDI = telephone.startsWith("55")
+      ? telephone
+      : "55" + telephone;
+
+    const menssageCOD = encodeURIComponent(menssage || "");
+    const url = `https://wa.me/${local_Number_DDI}${
+      menssageCOD ? `?text=${menssageCOD}` : ""
+    }`;
+
+    setLink(url);
+  };
+
+  //---------Copiar Link------------
+
+  const copy = () => {
+    navigator.clipboard
+      .writeText(link)
+      .then(() => {
+        console.log("Link copiado com sucesso");
+      })
+      .catch(() => {
+        console.log("Link não copiado");
+      });
+  };
+
+  //---------Abrir Whatsapp------------
+
+  const openZapZap = () => {
+    window.open(link, "_blank");
+  };
 
   return (
     <>
-     
       <div className={styles.containerBox}>
-        <h2 className={styles.tittle}> Gerador De Link</h2>
+        <h2 className={styles.tittle}>
+          {" "}
+          <MessageCircle /> Gerador De Link
+        </h2>
         <div className={styles.doc}>
-          <label>📞   Número de Telefone</label>
+          <label>📞 Número de Telefone</label>
           <input
             className={styles.inputNumber}
             type="text"
             placeholder="(xx) x xxxx-xxxx"
             maxLength={16}
-            value={formatInputTelefone(telefone)}
-            onChange={handlesTelefone}
+            value={formatInputTelephone(telephone)}
+            onChange={handlesTelephone}
           />
+
           <br />
-          <label>Mensagem (opicional)</label>
-          <textarea className={styles.textareaMenssage}></textarea>
+
+          <label>💬 Mensagem (opicional)</label>
+          <textarea
+            className={styles.textareaMenssage}
+            placeholder="Preparar mensagem"
+            value={menssage}
+            onChange={(e) => setMenssage(e.target.value)}
+          ></textarea>
+
           <br />
-          <button className={styles.buttonPrepar}>Preparar Mensagem</button>
+          <button className={styles.buttonPrepar} onClick={generateLink}>
+            Preparar Mensagem
+          </button>
         </div>
         <div className={styles.containerLinkGerado}>
+          <label>Links Gerados:</label>
+
+          {link && (
+            <div>
+              <div className={styles.linkagem}>
+                <p className={styles.styleLink} href={link}>
+                  {link.length > 56 ? link.substring(0, 28) + "" : link}
+                </p>
+                <button className={styles.buttonCopy} onClick={copy}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-book-copy-icon lucide-book-copy"
+                  >
+                    <path d="M5 7a2 2 0 0 0-2 2v11" />
+                    <path d="M5.803 18H5a2 2 0 0 0 0 4h9.5a.5.5 0 0 0 .5-.5V21" />
+                    <path d="M9 15V4a2 2 0 0 1 2-2h9.5a.5.5 0 0 1 .5.5v14a.5.5 0 0 1-.5.5H11a2 2 0 0 1 0-4h10" />
+                  </svg>
+                </button>
+              </div>
+              <button className={styles.goWhatsapp} onClick={openZapZap}>
+                Abrir Whatsapp
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </>

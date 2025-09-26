@@ -1,7 +1,10 @@
 .containerBox {
-  position: relative;
   height: auto;
-  width: 26%;
+  margin-top: 24px;
+  min-width: 300px;
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
   padding: 20px;
 
   border: 1px solid #9c9c9c;
@@ -9,13 +12,14 @@
   border-radius: 5px;
   overflow: hidden;
   z-index: 1;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .tittle {
+  display: flex;
+  align-items: center;
   color: #059669;
   margin-bottom: 20px;
-
-
 }
 
 .doc {
@@ -28,10 +32,14 @@
 label {
   color: rgb(0, 0, 0);
   margin: 5px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .inputNumber {
-  background-color: #FAFAFA;
+  background-color: #f7f6f9;
   color: rgb(0, 0, 0);
 
   border-radius: 5px;
@@ -39,50 +47,85 @@ label {
   outline: none;
 
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .inputNumber:focus {
   background-color: #66ffcf5b;
 }
 
-.textareaMenssage{
+.textareaMenssage {
   border: #9c9c9c 1px solid;
   border-radius: 5px;
-  background-color: #FAFAFA;
+  background-color: #f7f6f9;
   color: black;
   padding: 10px;
 
-  height: 17vh;
   width: auto;
-  min-height: 17vh;
-  max-height: 10vh;
-  margin-bottom: 20px;
+  min-height: 14vh;
+  max-height: 17vh;
 }
 
-.textareaMensage:focus {
+.textareaMenssage:focus {
   background-color: #66ffcf5b;
 }
 
-.buttonPrepar{
+.buttonPrepar {
   height: 40px;
-  margin-bottom:20px; 
+  margin-bottom: 20px;
 
   border: none;
   border-radius: 5px;
-    
+
   color: aliceblue;
-  background-color: #059669;
+  background-color: #1bc257;
 
   cursor: pointer;
 }
 
-.logoText{
-  color: #059669
+/*   Área de Geração de Link   */
+
+.containerLinkGerado {
+  border-radius: 10px;
+  background-color: #f7f6f9;
+  border: #9c9c9c 1px solid;
+  padding: 15px 15px 15px 15px;
 }
 
-.containerLinkGerado{
+.linkagem {
   border-radius: 10px;
-  background-color: #FAFAFA;
   border: #9c9c9c 1px solid;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: space-between;
+
+  padding: 10px 0px 10px 10px;
+  width: 100%;
+  margin-top: 5px;
+  margin-right: 5%;
+}
+
+.newLink {
+  display: flex;
+}
+
+.goWhatsapp {
+  height: 40px;
+  width: 100%;
+  margin-top: 10px;
+
+  border: none;
+  border-radius: 5px;
+
+  color: aliceblue;
+  background-color: #1bc257;
+
+  cursor: pointer;
+}
+
+.buttonCopy {
+  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
