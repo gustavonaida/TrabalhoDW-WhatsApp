@@ -9,8 +9,7 @@
 .Container {
   margin: 0;
   padding: 0;
-  background-image: url("https://cdn2.f-cdn.com/contestentries/2046262/58571795/61f00c583e000_thumb900.jpg");
-  background-size: cover;   
+  background-color: #FAFAFA;   
   height: 100vh;
 
   display: flex;
