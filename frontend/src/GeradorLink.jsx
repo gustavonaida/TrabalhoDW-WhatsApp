@@ -34,7 +34,7 @@ export default function GeradorLink() {
   };
 
   //--------------- Geração de Link ---------------------------
-  const [link, setLink] = useState("");
+  const [links, setLinks] = useState([]);
   const [menssage, setMenssage] = useState("");
 
   const generateLink = () => {
@@ -52,12 +52,12 @@ export default function GeradorLink() {
       menssageCOD ? `?text=${menssageCOD}` : ""
     }`;
 
-    setLink(url);
+    setLinks((novoLink)  => ([...novoLink, url]));
   };
 
   //---------Copiar Link------------
 
-  const copy = () => {
+  const copy = (link) => {
     navigator.clipboard
       .writeText(link)
       .then(() => {
@@ -70,7 +70,7 @@ export default function GeradorLink() {
 
   //---------Abrir Whatsapp------------
 
-  const openZapZap = () => {
+  const openZapZap = (link) => {
     window.open(link, "_blank");
   };
 
@@ -110,34 +110,39 @@ export default function GeradorLink() {
         <div className={styles.containerLinkGerado}>
           <label>Links Gerados:</label>
 
-          {link && (
+          {links.length > 0 && (
             <div>
-              <div className={styles.linkagem}>
-                <p className={styles.styleLink} href={link}>
-                  {link.length > 56 ? link.substring(0, 28) + "" : link}
-                </p>
-                <button className={styles.buttonCopy} onClick={copy}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-book-copy-icon lucide-book-copy"
-                  >
-                    <path d="M5 7a2 2 0 0 0-2 2v11" />
-                    <path d="M5.803 18H5a2 2 0 0 0 0 4h9.5a.5.5 0 0 0 .5-.5V21" />
-                    <path d="M9 15V4a2 2 0 0 1 2-2h9.5a.5.5 0 0 1 .5.5v14a.5.5 0 0 1-.5.5H11a2 2 0 0 1 0-4h10" />
-                  </svg>
-                </button>
-              </div>
-              <button className={styles.goWhatsapp} onClick={openZapZap}>
-                Abrir Whatsapp
-              </button>
+              {links.map((link, index) =>(
+                <div  key={index}>
+                 <div className={styles.linkagem}>
+                 <p className={styles.styleLink} href={links}>
+                   {links.length > 56 ? links.substring(0, 28) + "" : link}
+                 </p>
+                 <button className={styles.buttonCopy} onClick={copy(link)}>
+                   <svg
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     class="lucide lucide-book-copy-icon lucide-book-copy"
+                   >
+                     <path d="M5 7a2 2 0 0 0-2 2v11" />
+                     <path d="M5.803 18H5a2 2 0 0 0 0 4h9.5a.5.5 0 0 0 .5-.5V21" />
+                     <path d="M9 15V4a2 2 0 0 1 2-2h9.5a.5.5 0 0 1 .5.5v14a.5.5 0 0 1-.5.5H11a2 2 0 0 1 0-4h10" />
+                   </svg>
+                 </button>
+               </div>
+               <button className={styles.goWhatsapp} onClick={() => openZapZap(link)}>
+                 Abrir Whatsapp
+               </button>
+               </div>
+              ))}
+             
             </div>
           )}
         </div>
