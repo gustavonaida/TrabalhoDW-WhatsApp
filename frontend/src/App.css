@@ -19,6 +19,7 @@
 
 .ContainerBoxes {
   width: 90vw;
+  background-color: transparent;
 
   display: flex;
   flex-wrap: wrap;
