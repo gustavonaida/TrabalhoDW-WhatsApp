@@ -1,6 +1,7 @@
 import "./App.css";
 import GeradorLink from "./GeradorLink";
 import AgendaContatos from "./AgendaContatos";
+import Tema from "./Tema";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <div className="ContainerBoxes">
           <GeradorLink />
           <AgendaContatos />
+          <Tema />
         </div>
       </div>
     </>
