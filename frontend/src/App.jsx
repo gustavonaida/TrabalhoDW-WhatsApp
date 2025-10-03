@@ -4,12 +4,15 @@ import Tema from "./Tema";
 import "./App.css";
 
 function App() {
-  return (
+  return (<>
+  <div className="ButtonTema">
+  <Tema/>
+  </div>
     <div className="Container">
-      <Tema />   {/* Botão de tema */}
       <GeradorLink />
       <AgendaContatos />
     </div>
+    </>
   );
 }
 
