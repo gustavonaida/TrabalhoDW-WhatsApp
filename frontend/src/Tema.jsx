@@ -1,7 +1,7 @@
 import styles from "./Tema.module.css";
 import React, { useState, useEffect } from "react";
 
-function App() {
+export default function Tema() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -10,8 +10,12 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <button onClick={() => setDarkMode(!darkMode)}>
-        <h1>
+      <button
+        aria-label="Alternar tema claro/escuro"
+        className={styles.toggle}
+        onClick={() => setDarkMode((p) => !p)}
+        title="Alternar tema"
+      >
           {darkMode ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -51,10 +55,7 @@ function App() {
               <path d="m19.07 4.93-1.41 1.41" />
             </svg>
           )}
-        </h1>
-      </button>
+ </button>
     </div>
   );
-}
-
-export default App;
+};
