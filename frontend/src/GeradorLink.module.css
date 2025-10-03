@@ -1,8 +1,7 @@
 .containerBox {
   height: auto;
   margin-top: 24px;
-  min-width: 300px;
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
   box-sizing: border-box;
   padding: 20px;
@@ -38,7 +37,7 @@ label {
 }
 
 .inputNumber {
-  background-color: #f7f6f9;
+  background-color: #ffffff;
   color: rgb(0, 0, 0);
 
   border-radius: 6px;
@@ -56,7 +55,7 @@ label {
 .textareaMenssage {
   border: #9c9c9c 1px solid;
   border-radius: 6px;
-  background-color: #f7f6f9;
+  background-color: #ffffff;
   color: black;
   padding: 10px;
   margin-bottom: 20px;
