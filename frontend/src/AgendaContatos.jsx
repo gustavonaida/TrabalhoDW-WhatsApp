@@ -86,16 +86,22 @@ export default function AgendaContatos() {
         <label>👤 Nome do contato</label>
         <input
           type="text"
-          className={styles.input}
+          className={styles.input1}
           placeholder="Nome"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
         />
+          <select class={styles.selectAnimado}>
+    <option value="">Selecione</option>
+    <option value="amigo">Amigo</option>
+    <option value="familia">Família</option>
+    <option value="trabalho">Trabalho</option>
+  </select>
 
         <label>📞 Número</label>
         <input
           type="text"
-          className={styles.input}
+          className={styles.input2}
           placeholder="(xx) xxxxx-xxxx"
           maxLength={16}
           value={formatInputNumero(numero)}
