@@ -1,19 +1,15 @@
-import "./App.css";
-import GeradorLink from "./GeradorLink";
 import AgendaContatos from "./AgendaContatos";
-import Tema from "./Tema";
+import GeradorLink from "./GeradorLink";
+import Tema from "./Tema"; 
+import "./App.css";
 
 function App() {
   return (
-    <>
-      <div className="Container">
-        <div className="ContainerBoxes">
-          <GeradorLink />
-          <AgendaContatos />
-          <Tema />
-        </div>
-      </div>
-    </>
+    <div className="Container">
+      <Tema />   {/* Botão de tema */}
+      <GeradorLink />
+      <AgendaContatos />
+    </div>
   );
 }
 
