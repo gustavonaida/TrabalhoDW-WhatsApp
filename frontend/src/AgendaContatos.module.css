@@ -2,27 +2,23 @@
   background-color: #ffffff;
   padding: 24px;
   border-radius: 8px;
-  border: 1px solid gray;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin-top: 24px;
-  min-width: 300px;
+  min-width: 28vw;
   max-width: 400px;
   width: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
-
 
 .mainWrapper {
   display: flex;
   justify-content: center;
   gap: 40px;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   margin-top: 40px;
 }
-
 
 .tittle {
   font-size: 25px;
@@ -31,14 +27,66 @@
   color: #059669;
 }
 
-
 .doc {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  position: relative;
 }
 
-.input, textarea {
+.NomeCor {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.inputColor {
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 2;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  background-color: none;
+}
+
+.inputColor::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 50%;
+}
+
+.inputColor::-webkit-color-swatch {
+  border-radius: 50%;
+}
+
+.inputColor:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.3);
+}
+
+.inputColor.ativo {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.input1:focus + .selectAnimado {
+  opacity: 1;
+  max-height: 200px;
+  pointer-events: auto;
+}
+
+.input1,
+.input2 {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #9c9c9c;
@@ -48,11 +96,21 @@
   box-sizing: border-box;
 }
 
+.input1:focus {
+  background-color: #66ffcf5b;
+  width: 86%;
+  transition: width 0.4s ease, height 0.4s ease, border-color 0.3s ease;
+}
 
-.buttonPrepar, .salvarAgenda {
+.input2:focus {
+  background-color: #66ffcf5b;
+}
+
+.buttonPrepar,
+.salvarAgenda {
   margin-top: 10px;
   padding: 10px;
-  background-color: #059669;
+  background-color: #1bc257;
   color: white;
   border: none;
   border-radius: 6px;
@@ -62,18 +120,23 @@
 }
 
 .listaContatos {
-  margin-top: 24px;
-}
-
-.cardContato {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #9c9c9c;
-  padding: 10px 0;
+  max-height: 19rem;
+  overflow-y: auto;
 }
 
 .info {
+  align-items: center;
+  display: flex;
+}
+
+.corPessoa {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.infoNomeNumero {
   display: flex;
   flex-direction: column;
 }
@@ -81,14 +144,47 @@
 .acoes button {
   margin-left: 8px;
   padding: 6px 10px;
-  background-color: transparent;
-  border: 1px solid #9c9c9c;
+
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   cursor: pointer;
   font-size: 13px;
 }
 
+.acoes {
+  display: flex;
+
+  justify-content: center;
+}
+h3 {
+  margin-top: 24px;
+}
+
+.AreaPessoas {
+  margin-top: 10px;
+
+  border-radius: 10px;
+}
+
+.cardContato {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 10px 0px 10px 0px;
+  border: #9c9c9c 1px solid;
+
+  border-radius: 6px;
+  padding: 10px;
+  background-color: #fafafa;
+}
+
+.SendButton {
+  color: #30a36c;
+}
+.editButton {
+  color: #027fff;
+}
 .deletar {
-  color: red;
-  border-color: red;
+  color: #d55a5a;
 }

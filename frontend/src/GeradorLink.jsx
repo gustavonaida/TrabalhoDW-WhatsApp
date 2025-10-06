@@ -36,6 +36,7 @@ export default function GeradorLink() {
   //--------------- Geração de Link ---------------------------
   const [links, setLinks] = useState([]);
   const [menssage, setMenssage] = useState("");
+  const [buttonScroll, setButtonScroll] = useState(false);
 
   const generateLink = () => {
     if (!telephone) {
@@ -52,7 +53,7 @@ export default function GeradorLink() {
       menssageCOD ? `?text=${menssageCOD}` : ""
     }`;
 
-    setLinks((novoLink)  => ([...novoLink, url]));
+    setLinks((novoLink) => [...novoLink, url]);
   };
 
   //---------Copiar Link------------
@@ -102,7 +103,6 @@ export default function GeradorLink() {
             onChange={(e) => setMenssage(e.target.value)}
           ></textarea>
 
-          <br />
           <button className={styles.buttonPrepar} onClick={generateLink}>
             Preparar Mensagem
           </button>
@@ -111,40 +111,54 @@ export default function GeradorLink() {
           <label>Links Gerados:</label>
 
           {links.length > 0 && (
-            <div>
-              {links.map((link, index) =>(
-                <div  key={index}>
-                 <div className={styles.linkagem}>
-                 <p className={styles.styleLink} href={links}>
-                   {links.length > 56 ? links.substring(0, 28) + "" : link}
-                 </p>
-                 <button className={styles.buttonCopy} onClick={copy(link)}>
-                   <svg
-                     xmlns="http://www.w3.org/2000/svg"
-                     width="24"
-                     height="24"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2"
-                     stroke-linecap="round"
-                     stroke-linejoin="round"
-                     class="lucide lucide-book-copy-icon lucide-book-copy"
-                   >
-                     <path d="M5 7a2 2 0 0 0-2 2v11" />
-                     <path d="M5.803 18H5a2 2 0 0 0 0 4h9.5a.5.5 0 0 0 .5-.5V21" />
-                     <path d="M9 15V4a2 2 0 0 1 2-2h9.5a.5.5 0 0 1 .5.5v14a.5.5 0 0 1-.5.5H11a2 2 0 0 1 0-4h10" />
-                   </svg>
-                 </button>
-               </div>
-               <button className={styles.goWhatsapp} onClick={() => openZapZap(link)}>
-                 Abrir Whatsapp
-               </button>
-               </div>
+            <div
+              className={`${styles.linksScroll} ${
+                buttonScroll ? styles.expandido : styles.compacto
+              }`}
+            >
+              {links.map((link, index) => (
+                <div key={index}>
+                  <div className={styles.linkagem}>
+                    <p className={styles.styleLink} href={links}>
+                      {link.length > 56 ? link.substring(0, 25) + "" : link}
+                    </p>
+                    <button className={styles.buttonCopy} onClick={copy(link)}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-book-copy-icon lucide-book-copy"
+                      >
+                        <path d="M5 7a2 2 0 0 0-2 2v11" />
+                        <path d="M5.803 18H5a2 2 0 0 0 0 4h9.5a.5.5 0 0 0 .5-.5V21" />
+                        <path d="M9 15V4a2 2 0 0 1 2-2h9.5a.5.5 0 0 1 .5.5v14a.5.5 0 0 1-.5.5H11a2 2 0 0 1 0-4h10" />
+                      </svg>
+                    </button>
+                  </div>
+                  <button
+                    className={styles.goWhatsapp}
+                    onClick={() => openZapZap(link)}
+                  >
+                    Abrir Whatsapp
+                  </button>
+                </div>
               ))}
-             
             </div>
           )}
+          <div className={styles.ExpandirButton}>
+            <button
+              className={styles.ButtonScrollBoleano}
+              onClick={() => setButtonScroll(!buttonScroll)}
+            >
+              {buttonScroll ? "Compactar ▲" : "Expandir ▼"}
+            </button>
+          </div>
         </div>
       </div>
     </>
