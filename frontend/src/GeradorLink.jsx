@@ -1,8 +1,38 @@
 import styles from "./GeradorLink.module.css";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BookCopy, MessageCircle } from "lucide-react";
 
 export default function GeradorLink() {
+
+  //-------------- Aba de Perguntas Rápidas --------------------
+  const [showPopUp, setShowPopUp] = useState(false)
+  const textareaRef = useRef(null)
+  const PopUpRef = useRef(null)
+
+  const easyAnswares =[
+    "Olá! Tudo bem? 😄",
+    "Bom dia! Tudo certo? Eu sou....",
+    "Boa tarde! Tudo certo? Eu sou....", 
+  ];
+
+  // -- Caso clique fora do PopUp de mensagens padrões o popUp fechará ( tentar entender )
+  useEffect(() => {
+    function handlePopUpClick(){
+      if( 
+        PopUpRef.current &&
+        PopUpRef.current.contains(event.target) &&
+        textareaRef.current.contains(event.target)
+      ){
+        setShowPopUp(false)
+      }
+    }
+    document.addEventListener("mousedown", handlePopUpClick)
+    return () => {
+    document.removeEventListener("mousedown", handlePopUpClick)
+    }
+  }, [])
+
+
   //-------------- Formatação: Telefone ------------------------
   const [telephone, setTelephone] = useState("");
 
