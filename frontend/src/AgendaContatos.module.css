@@ -12,22 +12,11 @@
   flex-direction: column;
 }
 
-/* GeradorLink.module.css (ou onde containerBox está definido) */
-
-/* regra local normal (já existente) */
-.containerBox { 
-  /* ... */
-}
-
-/* override quando body tiver .dark
-   o compilador de CSS Modules irá transformar .containerBox para o hash correto,
-   resultando em: body.dark .containerBox_hash { ... } - portanto funciona */
 :global(body.dark) .containerBox {
   background-color: #2a2a2a;
   color: #fff;
   border: 1px solid #3a3a3a;
 }
-
 
 .mainWrapper {
   display: flex;

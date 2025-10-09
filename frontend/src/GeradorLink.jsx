@@ -3,35 +3,34 @@ import React, { useState, useEffect, useRef } from "react";
 import { BookCopy, MessageCircle } from "lucide-react";
 
 export default function GeradorLink() {
-
   //-------------- Aba de Perguntas Rápidas --------------------
-  const [showPopUp, setShowPopUp] = useState(false)
-  const textareaRef = useRef(null)
-  const PopUpRef = useRef(null)
+  const [showPopUp, setShowPopUp] = useState(false);
+  const textareaRef = useRef(null);
+  const PopUpRef = useRef(null);
 
-  const easyAnswares =[
+  const easyAnswares = [
     "Olá! Tudo bem? 😄",
     "Bom dia! Tudo certo? Eu sou....",
-    "Boa tarde! Tudo certo? Eu sou....", 
+    "Boa tarde! Tudo certo? Eu sou....",
   ];
 
   // -- Caso clique fora do PopUp de mensagens padrões o popUp fechará ( tentar entender )
   useEffect(() => {
-    function handlePopUpClick(){
-      if( 
+    function handlePopUpClick(event) {
+      if (
         PopUpRef.current &&
-        PopUpRef.current.contains(event.target) &&
-        textareaRef.current.contains(event.target)
-      ){
-        setShowPopUp(false)
+        !PopUpRef.current.contains(event.target) &&
+        textareaRef.current &&
+        !textareaRef.current.contains(event.target)
+      ) {
+        setShowPopUp(false);
       }
     }
-    document.addEventListener("mousedown", handlePopUpClick)
+    document.addEventListener("mousedown", handlePopUpClick);
     return () => {
-    document.removeEventListener("mousedown", handlePopUpClick)
-    }
-  }, [])
-
+      document.removeEventListener("mousedown", handlePopUpClick);
+    };
+  }, []);
 
   //-------------- Formatação: Telefone ------------------------
   const [telephone, setTelephone] = useState("");
@@ -130,8 +129,26 @@ export default function GeradorLink() {
             className={styles.textareaMenssage}
             placeholder="Preparar mensagem"
             value={menssage}
+            onClick={() => setShowPopUp(true)}
+            ref={textareaRef}
             onChange={(e) => setMenssage(e.target.value)}
           ></textarea>
+
+          {showPopUp && (
+            <div ref={PopUpRef} className={styles.popUp}>
+              {easyAnswares.map((msg, i) => (
+                <p
+                  key={i}
+                  onClick={() => {
+                    setMenssage(msg);
+                    setShowPopUp(false);
+                  }}
+                >
+                  {msg}
+                </p>
+              ))}
+            </div>
+          )}
 
           <button className={styles.buttonPrepar} onClick={generateLink}>
             Preparar Mensagem
@@ -152,7 +169,10 @@ export default function GeradorLink() {
                     <p className={styles.styleLink} href={links}>
                       {link.length > 56 ? link.substring(0, 25) + "" : link}
                     </p>
-                    <button className={styles.buttonCopy} onClick={copy(link)}>
+                    <button
+                      className={styles.buttonCopy}
+                      onClick={() => copy(link)}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -163,7 +183,7 @@ export default function GeradorLink() {
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        class="lucide lucide-book-copy-icon lucide-book-copy"
+                        className="lucide lucide-book-copy-icon lucide-book-copy"
                       >
                         <path d="M5 7a2 2 0 0 0-2 2v11" />
                         <path d="M5.803 18H5a2 2 0 0 0 0 4h9.5a.5.5 0 0 0 .5-.5V21" />

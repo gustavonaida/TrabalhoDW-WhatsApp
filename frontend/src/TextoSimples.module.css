@@ -1,0 +1,21 @@
+.PositionText {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+
+  top: 50px;
+
+  width: 100vw;
+}
+
+.Tittle {
+  color: #1bc257;
+}
+
+.SimpleText {
+  text-align: center;
+}
+
+.SubTittle {
+  color: #666666;
+}

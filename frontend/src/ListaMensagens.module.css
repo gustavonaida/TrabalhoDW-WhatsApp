@@ -1,0 +1,75 @@
+/*  Aba Lateral */
+
+.abaLateral {
+  position: fixed;
+  top: 0;
+  left: -30rem;
+
+  width: 30rem;
+  height: 100vh;
+
+  background-color: rgba(255, 255, 255, 0.116);
+  backdrop-filter: blur(
+    30px
+  ); /*Backdrop faz um efeito de blur, meio transparente*/
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+
+  z-index: 2000;
+}
+
+.abaLateral.open {
+  left: 0;
+}
+
+.aba {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Botao de chamar painel*/
+
+.buttonListMensage {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  z-index: 1000;
+  transition: left 0.3s ease;
+}
+
+.buttonListMensage.open {
+  left: calc(30rem + 50px);
+  transition: left 0.3s ease;
+}
+
+/* Botao Fechar e Mudança de Tema*/
+
+.ButtonTema {
+  display: flex;
+  justify-content: end;
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  width: 95%;
+}
+
+.CloseAndTema {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.CloseAba {
+  color: #d55a5a;
+}
+
+/* Parte Funcional do Painel */
+
+.boxSelectMensage {
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+
+  height: 80vh;
+}

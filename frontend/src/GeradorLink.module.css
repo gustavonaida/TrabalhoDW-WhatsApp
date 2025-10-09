@@ -9,7 +9,7 @@
   background-color: #fdfdfd;
   border-radius: 6px;
   overflow: hidden;
-  z-index: 1;
+
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -20,28 +20,24 @@
   margin-bottom: 20px;
 }
 
-/* GeradorLink.module.css (ou onde containerBox está definido) */
-
-/* regra local normal (já existente) */
-.containerBox { 
-  /* ... */
-}
-
-/* override quando body tiver .dark
-   o compilador de CSS Modules irá transformar .containerBox para o hash correto,
-   resultando em: body.dark .containerBox_hash { ... } - portanto funciona */
 :global(body.dark) .containerBox {
   background-color: #2a2a2a;
   color: #fff;
   border: 1px solid #3a3a3a;
 }
 
-
 .doc {
   display: flex;
   flex-direction: column;
 }
 
+.popUp {
+  border: 1px solid #9c9c9c;
+  border-radius: 8px;
+
+  left: 100%;
+  margin-bottom: 20px;
+}
 /* Área de formulário */
 
 label {

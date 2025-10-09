@@ -5,6 +5,16 @@
   font-family: "Segoe UI", Roboto, sans-serif;
 }
 
+/* Containers */
+
+.ContainerBoxes {
+  width: 90vw;
+  background-color: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 .Container {
   margin: 0;
   padding: 0;
@@ -17,21 +27,15 @@
     border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.ButtonTema {
+/* Botoes de Interação de Funcionalidades Externas */
+
+.ButtonList {
   display: flex;
-  justify-content: end;
   position: fixed;
+
   top: 50px;
   right: 50px;
-  width: 95%;
-}
-
-.ContainerBoxes {
-  width: 90vw;
-  background-color: transparent;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  width: 5%;
 }
 
 .logoText {

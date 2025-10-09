@@ -1,17 +1,22 @@
 import AgendaContatos from "./AgendaContatos";
 import GeradorLink from "./GeradorLink";
-import Tema from "./Tema"; 
+import Text from "./TextoSimples";
 import "./App.css";
+import ListaMensagens from "./ListaMensagens";
 
 function App() {
-  return (<>
-  <div className="ButtonTema">
-  <Tema/>
-  </div>
-    <div className="Container">
-      <GeradorLink />
-      <AgendaContatos />
-    </div>
+  return (
+    <>
+      <div>
+        <Text />
+      </div>
+      <div className="ButtonList">
+        <ListaMensagens />
+      </div>
+      <div className="Container">
+        <GeradorLink />
+        <AgendaContatos />
+      </div>
     </>
   );
 }
