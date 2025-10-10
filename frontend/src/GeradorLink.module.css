@@ -1,7 +1,6 @@
 .containerBox {
   height: auto;
   margin-top: 24px;
-  margin-bottom: 50px;
   max-width: 500px;
   width: 100%;
   box-sizing: border-box;
@@ -21,51 +20,7 @@
   margin-bottom: 20px;
 }
 
-:global(body.dark) .Mensagem {
-color: white;
-}
-
-
 :global(body.dark) .containerBox {
-  background-color: #2a2a2a;
-  color: #fff;
-  border: 1px solid #3a3a3a;
-}
-
-
-:global(body.dark) .DefaultMensage {
-  background-color: #2a2a2a;
-  color: #fff;
-  border: 1px solid #3a3a3a;
-}
-
-
-:global(body.dark) .textareaMenssage{
-  background-color: #2a2a2a;
-  color: #fff;
-  border: 1px solid #3a3a3a;
-}
-
-:global(body.dark) .inputNumber{
-  background-color: #2a2a2a;
-  color: #fff;
-  border: 1px solid #3a3a3a;
-}
-
-
-:global(body.dark) .containerLinkGerado{
-  background-color: #2a2a2a;
-  color: #fff;
-  border: 1px solid #3a3a3a;
-}
-
-:global(body.dark) .linksScroll{
-  background-color: #2a2a2a;
-  color: black;
-  border: 1px solid #3a3a3a;
-}
-
-:global(body.dark) .ButtonScrollBoleano{
   background-color: #2a2a2a;
   color: #fff;
   border: 1px solid #3a3a3a;
@@ -80,24 +35,8 @@ color: white;
   border: 1px solid #9c9c9c;
   border-radius: 8px;
 
-  padding: 10px;
   left: 100%;
   margin-bottom: 20px;
-  max-height: 200px;
-  overflow: scroll;
-}
-.DefaultMensage{
-  border-radius: 6px;
-  border: #9c9c9c 1px solid;
-  background-color: #fafafa;
-  display: flex;
-  justify-content: space-between;
-
-  padding: 10px 0px 10px 10px;
-  width: 100%;
-  margin-top: 5px;
-  margin-right: 5%;
-  max-height: 400px;
 }
 /* Área de formulário */
 
