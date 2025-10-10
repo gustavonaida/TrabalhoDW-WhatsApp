@@ -1,6 +1,8 @@
 .containerBox {
   height: auto;
   margin-top: 24px;
+  margin-bottom: 24px;
+
   max-width: 500px;
   width: 100%;
   box-sizing: border-box;
