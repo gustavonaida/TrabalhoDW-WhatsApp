@@ -18,6 +18,19 @@
   border: 1px solid #3a3a3a;
 }
 
+:global(body.dark) .cardContato {
+  background-color: #2a2a2a;
+  color: #fff;
+  border: 1px solid #3a3a3a;
+}
+
+:global(body.dark) .input1 {
+  color: #fff;
+}
+:global(body.dark) .input2 {
+  color: #fff;
+}
+
 .mainWrapper {
   display: flex;
   justify-content: center;
@@ -30,7 +43,7 @@
   font-size: 25px;
   font-weight: 600;
   margin-bottom: 16px;
-  color: #059669;
+  color: #1bc257;
 }
 
 .doc {
@@ -85,6 +98,10 @@
   pointer-events: auto;
 }
 
+.inputColor:hover {
+  transform: scale(1.03);
+}
+
 .input1:focus + .selectAnimado {
   opacity: 1;
   max-height: 200px;
@@ -123,6 +140,10 @@
   cursor: pointer;
   font-weight: 500;
   width: 100%;
+}
+
+.buttonPrepar:hover {
+  transform: scale(1.03);
 }
 
 .listaContatos {
@@ -188,9 +209,24 @@ h3 {
 .SendButton {
   color: #30a36c;
 }
+.SendButton:hover {
+  transform: scale(1.04);
+
+  background-color: #30e68e93;
+}
+
 .editButton {
   color: #027fff;
 }
+.editButton:hover {
+  transform: scale(1.04);
+  background-color: rgba(0, 162, 255, 0.445);
+}
+
 .deletar {
   color: #d55a5a;
+}
+.deletar:hover {
+  transform: scale(1.04);
+  background-color: #ee45459a;
 }

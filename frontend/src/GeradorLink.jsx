@@ -12,7 +12,7 @@ export default function GeradorLink() {
     "Olá! Tudo bem? 😄",
     "Bom dia! Tudo certo? Eu sou....",
     "Boa tarde! Tudo certo? Eu sou....",
-    "Opa, tudo tranquilo?"
+    "Opa, tudo tranquilo?",
   ];
 
   // -- Caso clique fora do PopUp de mensagens padrões o popUp fechará ( tentar entender )
@@ -137,21 +137,21 @@ export default function GeradorLink() {
 
           {showPopUp && (
             <>
-            <label> 😁 Exemplos de Mensagens-Padrão</label>
-            <div ref={PopUpRef} className={styles.popUp}>
-              {easyAnswares.map((msg, i) => (
-                <p
-                  key={i}
-                  onClick={() => {
-                    setMenssage(msg);
-                    setShowPopUp(false);
-                  }}
-                  className={styles.DefaultMensage}
-                >
-                  {msg}
-                </p>
-              ))}
-            </div>
+              <label> 😁 Exemplos de Mensagens-Padrão</label>
+              <div ref={PopUpRef} className={styles.popUp}>
+                {easyAnswares.map((msg, i) => (
+                  <p
+                    key={i}
+                    onClick={() => {
+                      setMenssage(msg);
+                      setShowPopUp(false);
+                    }}
+                    className={styles.DefaultMensage}
+                  >
+                    {msg}
+                  </p>
+                ))}
+              </div>
             </>
           )}
 
@@ -188,7 +188,7 @@ export default function GeradorLink() {
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        className="lucide lucide-book-copy-icon lucide-book-copy"
+                        className={styles.lucide}
                       >
                         <path d="M5 7a2 2 0 0 0-2 2v11" />
                         <path d="M5.803 18H5a2 2 0 0 0 0 4h9.5a.5.5 0 0 0 .5-.5V21" />

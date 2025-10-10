@@ -1,9 +1,8 @@
 import styles from "./AgendaContatos.module.css";
 import { useState } from "react";
 
-export default function AgendaContatos() {
+export default function AgendaContatos({ contatos, setContatos }) {
   const [nome, setNome] = useState("");
-  const [contatos, setContatos] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
 
   //-------------- Mostrar cores -----------------------------

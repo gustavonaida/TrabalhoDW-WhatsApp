@@ -22,8 +22,8 @@
   left: 0;
 }
 
-:global(body.dark) .svg {
-color: white;
+:global(body.dark) .lucideList {
+  color: white;
 }
 
 .aba {
@@ -71,9 +71,80 @@ color: white;
 
 /* Parte Funcional do Painel */
 
+.containerList {
+  max-height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
 .boxSelectMensage {
   border: 1px solid #3a3a3a;
   border-radius: 8px;
+  padding: 10px 10px 0px 10px;
 
   height: 80vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.corPessoa {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+
+  margin-right: 10px;
+}
+
+.tittle {
+  text-align: center;
+}
+h1 {
+  color: #30a36c;
+}
+
+/* Lista de Pessoas */
+
+.List {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  padding: 10px;
+
+  border: #3a3a3a solid 1px;
+  border-radius: 8px;
+
+  max-height: 100px;
+}
+
+.semCriatividadeParaNome {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input de Criação de Mensagem */
+
+.textareaMenssage {
+  border: #9c9c9c 1px solid;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.116);
+  backdrop-filter: blur(
+    30px
+  ); /*Backdrop faz um efeito de blur, meio transparente*/
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1);
+  color: black;
+  padding: 10px;
+  margin-bottom: 20px;
+
+  width: 100%;
+  min-height: 14vh;
+  max-height: 17vh;
+}
+.fundoBlur {
+  width: 100%;
+}
+
+.textareaMenssage:focus {
+  background-color: #66ffcf5b;
 }
