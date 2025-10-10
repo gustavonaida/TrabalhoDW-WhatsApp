@@ -22,6 +22,10 @@
   left: 0;
 }
 
+:global(body.dark) .svg {
+color: white;
+}
+
 .aba {
   padding: 30px;
   display: flex;

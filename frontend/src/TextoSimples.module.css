@@ -17,3 +17,8 @@
 .SubTittle {
   color: #666666;
 }
+
+
+:global(body.dark) .PositionText {
+  background-color: #0b0b0e;
+}

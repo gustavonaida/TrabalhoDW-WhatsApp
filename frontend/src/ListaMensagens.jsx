@@ -14,7 +14,7 @@ export default function ListaMensagens() {
           onClick={() => setOpen(!open)}
         >
           {" "}
-          <svg
+          <svg className={styles.svg}
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
