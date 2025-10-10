@@ -33,8 +33,8 @@
 
 .buttonListMensage {
   position: fixed;
-  top: 50px;
-  left: 50px;
+  top: 30px;
+  left: 30px;
   z-index: 1000;
   transition: left 0.3s ease;
 }

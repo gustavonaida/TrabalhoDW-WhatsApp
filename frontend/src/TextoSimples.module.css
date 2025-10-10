@@ -1,9 +1,7 @@
 .PositionText {
   display: flex;
   justify-content: center;
-  position: fixed;
-
-  top: 50px;
+  background-color: #f7f6f9;
 
   width: 100vw;
 }
