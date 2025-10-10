@@ -113,7 +113,7 @@ export default function GeradorLink() {
           <MessageCircle /> Gerador De Link
         </h2>
         <div className={styles.doc}>
-          <label>📞 Número de Telefone</label>
+          <label className={styles.Mensagem}>📞 Número de Telefone</label>
           <input
             className={styles.inputNumber}
             type="text"
@@ -125,7 +125,7 @@ export default function GeradorLink() {
 
           <br />
 
-          <label>💬 Mensagem (opicional)</label>
+          <label className={styles.Mensagem}>💬 Mensagem (opicional)</label>
           <textarea
             className={styles.textareaMenssage}
             placeholder="Preparar mensagem"
@@ -137,7 +137,7 @@ export default function GeradorLink() {
 
           {showPopUp && (
             <>
-            <label> 😁 Exemplos de Mensagens-Padrão</label>
+            <label className={styles.Mensagem}> 😁 Exemplos de Mensagens-Padrão</label>
             <div ref={PopUpRef} className={styles.popUp}>
               {easyAnswares.map((msg, i) => (
                 <p
@@ -160,7 +160,7 @@ export default function GeradorLink() {
           </button>
         </div>
         <div className={styles.containerLinkGerado}>
-          <label>Links Gerados:</label>
+          <label className={styles.Mensagem}>Links Gerados:</label>
 
           {links.length > 0 && (
             <div
