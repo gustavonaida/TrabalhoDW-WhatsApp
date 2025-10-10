@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   background-color: #f7f6f9;
+  padding-top: 20px;
+  
 
   width: 100vw;
 }
