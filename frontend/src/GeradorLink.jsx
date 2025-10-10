@@ -12,6 +12,7 @@ export default function GeradorLink() {
     "Olá! Tudo bem? 😄",
     "Bom dia! Tudo certo? Eu sou....",
     "Boa tarde! Tudo certo? Eu sou....",
+    "Opa, tudo tranquilo?"
   ];
 
   // -- Caso clique fora do PopUp de mensagens padrões o popUp fechará ( tentar entender )
@@ -135,6 +136,8 @@ export default function GeradorLink() {
           ></textarea>
 
           {showPopUp && (
+            <>
+            <label> 😁 Exemplos de Mensagens-Padrão</label>
             <div ref={PopUpRef} className={styles.popUp}>
               {easyAnswares.map((msg, i) => (
                 <p
@@ -143,11 +146,13 @@ export default function GeradorLink() {
                     setMenssage(msg);
                     setShowPopUp(false);
                   }}
+                  className={styles.DefaultMensage}
                 >
                   {msg}
                 </p>
               ))}
             </div>
+            </>
           )}
 
           <button className={styles.buttonPrepar} onClick={generateLink}>
