@@ -82,7 +82,7 @@
   border-radius: 8px;
   padding: 10px 10px 0px 10px;
 
-  height: 80vh;
+  height: 85vh;
 
   display: flex;
   flex-direction: column;
@@ -145,6 +145,48 @@ h1 {
   width: 100%;
 }
 
+:global(body.dark) .textareaMenssage {
+  background-color: #2a2a2a;
+  color: #fff;
+  border: 1px solid #3a3a3a;
+}
+
 .textareaMenssage:focus {
   background-color: #66ffcf5b;
+}
+
+/* Seleção de Cor */
+
+.ContainerInputColor{
+  display: flex;
+  justify-content: space-around;
+
+  margin-top: 20px;
+
+  width: 100%;
+}
+
+.InputMensageColor1,
+.InputMensageColor2,
+.InputMensageColor3,
+.InputMensageColor4,
+.InputMensageColor5{
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 2;
+
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+}
+
+.InputMensageColor2{
+  background-color: #1bc257 ;
+  cursor: pointer;
+}
+
+.InputMensageColor1{
+  background-color: #FE0032;
 }

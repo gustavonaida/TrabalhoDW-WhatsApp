@@ -95,8 +95,17 @@ export default function ListaMensagens({ contatos }) {
                   diferentes links!
                 </p>
               </div>
+                <div className={styles.ContainerInputColor}>
+                  <bottom className={styles.InputMensageColor1}></bottom>
+                  <bottom className={styles.InputMensageColor2}></bottom>
+                  <bottom className={styles.InputMensageColor3}></bottom>
+                  <bottom className={styles.InputMensageColor4}></bottom>
+                   <bottom className={styles.InputMensageColor5}></bottom>
+                </div>
+                
               <br />
               <div className={styles.containerList}>
+              
                 {contatos.length > 0 ? (
                   contatos.map((c, i) => (
                     <>
