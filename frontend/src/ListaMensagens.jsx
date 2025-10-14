@@ -96,11 +96,11 @@ export default function ListaMensagens({ contatos }) {
                 </p>
               </div>
                 <div className={styles.ContainerInputColor}>
-                  <bottom className={styles.InputMensageColor1}></bottom>
-                  <bottom className={styles.InputMensageColor2}></bottom>
-                  <bottom className={styles.InputMensageColor3}></bottom>
-                  <bottom className={styles.InputMensageColor4}></bottom>
-                   <bottom className={styles.InputMensageColor5}></bottom>
+                  <button className={styles.InputMensageColor1}></button>
+                  <button className={styles.InputMensageColor2}></button>
+                  <button className={styles.InputMensageColor3}></button>
+                  <button className={styles.InputMensageColor4}></button>
+                   <button className={styles.InputMensageColor5}></button>
                 </div>
                 
               <br />

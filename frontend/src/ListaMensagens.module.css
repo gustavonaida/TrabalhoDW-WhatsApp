@@ -82,7 +82,7 @@
   border-radius: 8px;
   padding: 10px 10px 0px 10px;
 
-  height: 85vh;
+  height: 70vh;
 
   display: flex;
   flex-direction: column;
@@ -178,15 +178,28 @@ h1 {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: none;
+
+
   padding: 0;
+  margin-bottom: 20px;
 }
 
 .InputMensageColor2{
-  background-color: #1bc257 ;
-  cursor: pointer;
+  background-color: #A51D2D ;
 }
 
 .InputMensageColor1{
-  background-color: #FE0032;
+  background-color: #1bc257;
+}
+
+.InputMensageColor3{
+  background-color: #C64600;
+}
+
+.InputMensageColor4{
+  background-color: #1A5FB4;
+}
+
+.InputMensageColor5{
+  background-color: #E5A50A;
 }
