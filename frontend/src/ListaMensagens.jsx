@@ -5,6 +5,7 @@ import Tema from "./Tema";
 export default function ListaMensagens({ contatos }) {
   // -------------- Abirir Aba Lateral ---------------
   const [open, setOpen] = useState(false);
+  const [colorFilter, setColorFilter] = useState(null)
 
   const formatInputNumero = (valor_digitado) => {
     const number = valor_digitado.replace(/\D/g, "").slice(0, 11);
@@ -27,6 +28,24 @@ export default function ListaMensagens({ contatos }) {
     return formatNumber;
   };
 
+  const standardizeColor = (color) => {
+    if (!color) return null;
+    return color.trim().toLowerCase();
+  }
+
+  const contatosFiltrados = colorFilter
+  ? contatos.filter(
+      (c) => standardizeColor(c.cor) === standardizeColor(colorFilter)
+    )
+  : contatos;
+
+  const cores = [
+    "#1bc257",
+    "#A51D2D", 
+    "#C64600", 
+    "#1A5FB4",
+    "#E5A50A", 
+  ]
   return (
     <>
       <div>
@@ -96,19 +115,24 @@ export default function ListaMensagens({ contatos }) {
                 </p>
               </div>
                 <div className={styles.ContainerInputColor}>
-                  <button className={styles.InputMensageColor1}></button>
-                  <button className={styles.InputMensageColor2}></button>
-                  <button className={styles.InputMensageColor3}></button>
-                  <button className={styles.InputMensageColor4}></button>
-                   <button className={styles.InputMensageColor5}></button>
+                  {cores.map((color, i) => (
+                    <button
+                    key={i}
+                    className={`${styles[`InputMensageColor${i + 1}`]} ${
+                      colorFilter === color ? styles.active : ""
+                    }`}
+                    onClick={() =>
+                      setColorFilter(colorFilter === color ? null : color)
+                    }> </button>
+                  ))}
+                  
                 </div>
                 
               <br />
               <div className={styles.containerList}>
               
-                {contatos.length > 0 ? (
-                  contatos.map((c, i) => (
-                    <>
+                {contatosFiltrados.length > 0 ? (
+                  contatosFiltrados.map((c, i) => (
                       <div key={i} className={styles.List}>
                         <div
                           className={styles.corPessoa}
@@ -121,7 +145,6 @@ export default function ListaMensagens({ contatos }) {
                           {formatInputNumero(c.numero)}
                         </div>
                       </div>
-                    </>
                   ))
                 ) : (
                   <i>Nenhum Contato Adicionado</i>
