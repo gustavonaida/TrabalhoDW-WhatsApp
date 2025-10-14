@@ -1,7 +1,7 @@
 import styles from "./AgendaContatos.module.css";
 import { useState } from "react";
 
-export default function AgendaContatos({ contatos, setContatos }) {
+export default function AgendaContatos({ contatos, setContatos, setNumeroSelecionado }) {
   const [nome, setNome] = useState("");
   const [editIndex, setEditIndex] = useState(null);
 
@@ -57,7 +57,7 @@ export default function AgendaContatos({ contatos, setContatos }) {
       setContatos([...contatos, novoContato]);
     }
 
-    setCorPadrao("#1BC257"); // reset cor
+    setCorPadrao("#1BC257");
     setNome("");
     setNumero("");
   };
@@ -74,14 +74,14 @@ export default function AgendaContatos({ contatos, setContatos }) {
     setContatos(atualizados);
   };
 
+  // 🚀 Atualizado: envia número para o GeradorLink ao invés de abrir o WhatsApp
   const handleMensagem = (numero) => {
     const cleaned = numero.replace(/\D/g, "");
     if (cleaned.length < 11) {
       alert("Número incompleto. Insira os 11 dígitos do telefone.");
       return;
     }
-    const link = `https://wa.me/55${cleaned}`;
-    window.open(link, "_blank");
+    setNumeroSelecionado(cleaned);
   };
 
   return (
@@ -143,7 +143,6 @@ export default function AgendaContatos({ contatos, setContatos }) {
                   </div>
                 </div>
 
-                {/* Botoes de Manipulacao */}
                 <div className={styles.acoes}>
                   <button
                     onClick={() => handleMensagem(contato.numero)}
@@ -152,7 +151,7 @@ export default function AgendaContatos({ contatos, setContatos }) {
                     title={
                       !isNumeroCompleto
                         ? "Número incompleto"
-                        : "Enviar mensagem"
+                        : "Enviar para o Gerador de Link"
                     }
                   >
                     <strong>
@@ -178,45 +177,14 @@ export default function AgendaContatos({ contatos, setContatos }) {
                     onClick={() => handleEditar(index)}
                     className={styles.editButton}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-pencil"
-                    >
-                      <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                      <path d="m15 5 4 4" />
-                    </svg>
+                    ✏️
                   </button>
 
                   <button
                     className={styles.deletar}
                     onClick={() => handleDeletar(index)}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-trash-2"
-                    >
-                      <path d="M10 11v6" />
-                      <path d="M14 11v6" />
-                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
-                      <path d="M3 6h18" />
-                      <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                    </svg>
+                    🗑️
                   </button>
                 </div>
               </div>

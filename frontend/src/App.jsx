@@ -7,6 +7,8 @@ import { useState } from "react";
 
 function App() {
   const [contatos, setContatos] = useState([]);
+  const [numeroSelecionado, setNumeroSelecionado] = useState(""); 
+
   return (
     <>
       <div>
@@ -16,8 +18,12 @@ function App() {
         <ListaMensagens contatos={contatos} />
       </div>
       <div className="Container">
-        <GeradorLink />
-        <AgendaContatos contatos={contatos} setContatos={setContatos} />
+        <GeradorLink numeroSelecionado={numeroSelecionado} /> {/* 👈 passa o número */}
+        <AgendaContatos
+          contatos={contatos}
+          setContatos={setContatos}
+          setNumeroSelecionado={setNumeroSelecionado} 
+        />
       </div>
     </>
   );
