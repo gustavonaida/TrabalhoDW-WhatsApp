@@ -14,7 +14,6 @@ export default function AgendaContatos({ contatos, setContatos }) {
 
   const formatInputNumero = (valor_digitado) => {
     const number = valor_digitado.replace(/\D/g, "").slice(0, 11);
-
     const qtdCaracteres = number.length;
     let formatNumber = number;
 
@@ -30,6 +29,7 @@ export default function AgendaContatos({ contatos, setContatos }) {
     if (qtdCaracteres >= 8) {
       formatNumber += "-" + number.substring(7, 11);
     }
+
     return formatNumber;
   };
 
@@ -41,7 +41,10 @@ export default function AgendaContatos({ contatos, setContatos }) {
   //------------------ Handles -----------------------------
 
   const handleSalvar = () => {
-    if (!numero) return;
+    if (!numero || numero.length < 11) {
+      alert("Número inválido. Insira os 11 dígitos.");
+      return;
+    }
 
     const novoContato = { nome, numero, cor: corPadrao };
 
@@ -73,6 +76,10 @@ export default function AgendaContatos({ contatos, setContatos }) {
 
   const handleMensagem = (numero) => {
     const cleaned = numero.replace(/\D/g, "");
+    if (cleaned.length < 11) {
+      alert("Número incompleto. Insira os 11 dígitos do telefone.");
+      return;
+    }
     const link = `https://wa.me/55${cleaned}`;
     window.open(link, "_blank");
   };
@@ -118,27 +125,59 @@ export default function AgendaContatos({ contatos, setContatos }) {
       <h3>Seus Contatos ({contatos.length})</h3>
       <div className={styles.listaContatos}>
         <div className={styles.AreaPessoas}>
-          {contatos.map((contato, index) => (
-            <div key={index} className={styles.cardContato}>
-              <div className={styles.info}>
-                <div
-                  className={styles.corPessoa}
-                  style={{ backgroundColor: contato.cor }}
-                ></div>
+          {contatos.map((contato, index) => {
+            const isNumeroCompleto =
+              contato.numero.replace(/\D/g, "").length === 11;
 
-                <div className={styles.infoNomeNumero}>
-                  <strong>{contato.nome}</strong>
-                  <span>{formatInputNumero(contato.numero)}</span>
+            return (
+              <div key={index} className={styles.cardContato}>
+                <div className={styles.info}>
+                  <div
+                    className={styles.corPessoa}
+                    style={{ backgroundColor: contato.cor }}
+                  ></div>
+
+                  <div className={styles.infoNomeNumero}>
+                    <strong>{contato.nome}</strong>
+                    <span>{formatInputNumero(contato.numero)}</span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Botoes de Manipulacao */}
-              <div className={styles.acoes}>
-                <button
-                  onClick={() => handleMensagem(contato.numero)}
-                  className={styles.SendButton}
-                >
-                  <strong>
+                {/* Botoes de Manipulacao */}
+                <div className={styles.acoes}>
+                  <button
+                    onClick={() => handleMensagem(contato.numero)}
+                    className={styles.SendButton}
+                    disabled={!isNumeroCompleto}
+                    title={
+                      !isNumeroCompleto
+                        ? "Número incompleto"
+                        : "Enviar mensagem"
+                    }
+                  >
+                    <strong>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-send"
+                      >
+                        <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+                        <path d="m21.854 2.147-10.94 10.939" />
+                      </svg>
+                    </strong>
+                  </button>
+
+                  <button
+                    onClick={() => handleEditar(index)}
+                    className={styles.editButton}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -149,61 +188,40 @@ export default function AgendaContatos({ contatos, setContatos }) {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="lucide lucide-send"
+                      className="lucide lucide-pencil"
                     >
-                      <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
-                      <path d="m21.854 2.147-10.94 10.939" />
+                      <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                      <path d="m15 5 4 4" />
                     </svg>
-                  </strong>
-                </button>
+                  </button>
 
-                <button
-                  onClick={() => handleEditar(index)}
-                  className={styles.editButton}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-pencil"
+                  <button
+                    className={styles.deletar}
+                    onClick={() => handleDeletar(index)}
                   >
-                    <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                    <path d="m15 5 4 4" />
-                  </svg>
-                </button>
-
-                <button
-                  className={styles.deletar}
-                  onClick={() => handleDeletar(index)}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-trash-2"
-                  >
-                    <path d="M10 11v6" />
-                    <path d="M14 11v6" />
-                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
-                    <path d="M3 6h18" />
-                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                  </svg>
-                </button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-trash-2"
+                    >
+                      <path d="M10 11v6" />
+                      <path d="M14 11v6" />
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                      <path d="M3 6h18" />
+                      <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    </svg>
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
