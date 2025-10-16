@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ListaMensagens.module.css";
 import Tema from "./Tema";
 
@@ -67,6 +67,18 @@ export default function ListaMensagens({ contatos }) {
     setShowPopUp(false);
   };
 
+  //-------------- Deletar Pessoa ------------
+
+  const [contatoVisivel, setContatoVisiveis] = useState(contatosFiltrados);
+
+  useEffect(() => {
+    setContatoVisiveis(contatosFiltrados);
+  }, [contatosFiltrados]);
+
+  const removeAba = (index) => {
+    setContatoVisiveis((prev) => prev.filter((_, i) => i !== index));
+  };
+
   return (
     <>
       <div>
@@ -102,7 +114,10 @@ export default function ListaMensagens({ contatos }) {
               <div className="ButtonTema">
                 <Tema />
               </div>
-              <button onClick={() => setOpen(false)} className={styles.CloseAba}>
+              <button
+                onClick={() => setOpen(false)}
+                className={styles.CloseAba}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -148,17 +163,43 @@ export default function ListaMensagens({ contatos }) {
 
               <br />
               <div className={styles.containerList}>
-                {contatosFiltrados.length > 0 ? (
-                  contatosFiltrados.map((c, i) => (
+                {contatoVisivel.length > 0 ? (
+                  contatoVisivel.map((c, i) => (
                     <div key={i} className={styles.List}>
-                      <div
-                        className={styles.corPessoa}
-                        style={{ backgroundColor: c.cor }}
-                      ></div>
-                      <div className={styles.semCriatividadeParaNome}>
-                        <strong>{c.nome}</strong>{" "}
-                        {formatInputNumero(c.numero)}
+                      <div className={styles.ListFormatForButton}>
+                        <div
+                          className={styles.corPessoa}
+                          style={{ backgroundColor: c.cor }}
+                        ></div>
+                        <div className={styles.semCriatividadeParaNome}>
+                          <strong>{c.nome}</strong>{" "}
+                          {formatInputNumero(c.numero)}
+                        </div>
                       </div>
+                      <button
+                        className={styles.deletar}
+                        onClick={() => removeAba(i)}
+                      >
+                        {" "}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-trash2-icon lucide-trash-2"
+                        >
+                          <path d="M10 11v6" />
+                          <path d="M14 11v6" />
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                          <path d="M3 6h18" />
+                          <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                        </svg>
+                      </button>
                     </div>
                   ))
                 ) : (
@@ -174,11 +215,8 @@ export default function ListaMensagens({ contatos }) {
                   value={mensagem}
                   onChange={(e) => setMensagem(e.target.value)}
                 ></textarea>
-                <button
-                  className={styles.buttonPrepar}
-                  onClick={gerarLinks}
-                >
-                  Preparar Mensagem para {contatosFiltrados.length}
+                <button className={styles.buttonPrepar} onClick={gerarLinks}>
+                  Preparar Mensagem para {contatoVisivel.length}
                 </button>
               </div>
             </div>
@@ -212,23 +250,23 @@ export default function ListaMensagens({ contatos }) {
                   <path d="m9 9 6 6" />
                 </svg>
               </button>
-              </nav>
-              <div className={styles.ContainerListaLinks}>
-                <ul>
-                  {linksGRD.map((link, i) => (
-                    <li key={i}>
-                      <div className={styles.ListaLinks}>
-                        <strong>{link.nome}</strong>
-                        <br />
-                        <p>Link Gerado:</p><a href={link.url} target="_blank" rel="noreferrer">
-                          {link.url}
-                        </a>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            
+            </nav>
+            <div className={styles.ContainerListaLinks}>
+              <ul>
+                {linksGRD.map((link, i) => (
+                  <li key={i}>
+                    <div className={styles.ListaLinks}>
+                      <strong>{link.nome}</strong>
+                      <br />
+                      <p>Link Gerado:</p>
+                      <a href={link.url} target="_blank" rel="noreferrer">
+                        {link.url}
+                      </a>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       )}
