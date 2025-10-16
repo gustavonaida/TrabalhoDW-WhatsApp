@@ -6,23 +6,14 @@
 }
 
 html {
-  background-color: #f7f6f9;
 }
 
 /* Containers */
 
-.ContainerBoxes {
-  width: 90vw;
-  background-color: transparent;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
 .Container {
   margin: 0;
   padding: 0;
-  background-color: #f7f6f9;
+
   height: 100%;
   min-height: 86vh;
   display: flex;
@@ -32,7 +23,35 @@ html {
     border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
+.ContainerBox {
+  height: 100%;
+  min-height: 70vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  transition: background-color 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease, box-shadow 0.25s ease;
+}
+@media (max-width: 900px) {
+  .Container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .ContainerBox {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
 /* Botoes de Interação de Funcionalidades Externas */
+
+.ListFormat {
+  display: flex;
+  justify-content: space-between;
+}
 
 .ButtonList {
   display: flex;
@@ -56,20 +75,6 @@ html {
   color: #24a363;
   text-shadow: 0 0 10px rgba(36, 163, 99, 0.6);
   transform: scale(1.02);
-}
-
-.containerBox {
-  background: #1f1f1f;
-  padding: 30px;
-  border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-  width: 90%;
-  max-width: 420px;
-  margin-top: 40px;
-  border: 1px solid #2a2a2a;
-  animation: fadeIn 0.6s ease;
-  transition: background-color 0.25s ease, color 0.25s ease,
-    border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .tittle {

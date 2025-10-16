@@ -7,7 +7,7 @@ import { useState } from "react";
 
 function App() {
   const [contatos, setContatos] = useState([]);
-  const [numeroSelecionado, setNumeroSelecionado] = useState(""); 
+  const [numeroSelecionado, setNumeroSelecionado] = useState("");
 
   return (
     <>
@@ -18,12 +18,15 @@ function App() {
         <ListaMensagens contatos={contatos} />
       </div>
       <div className="Container">
-        <GeradorLink numeroSelecionado={numeroSelecionado} /> {/* 👈 passa o número */}
-        <AgendaContatos
-          contatos={contatos}
-          setContatos={setContatos}
-          setNumeroSelecionado={setNumeroSelecionado} 
-        />
+        <div className="ContainerBox">
+          <GeradorLink numeroSelecionado={numeroSelecionado} />{" "}
+          {/* 👈 passa o número */}
+          <AgendaContatos
+            contatos={contatos}
+            setContatos={setContatos}
+            setNumeroSelecionado={setNumeroSelecionado}
+          />
+        </div>
       </div>
     </>
   );
