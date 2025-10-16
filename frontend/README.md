@@ -23,7 +23,7 @@ A ideia é facilitar a vida de quem precisa compartilhar seu número de WhatsApp
 
 ---
 ## Link da aplicação 
-👉 link ---------------pedir ao gustavo
+👉 https://trabalhodw-whatsapp.onrender.com/
 
 ---
 
@@ -93,7 +93,7 @@ Opção de envio de mensagens padrão ao gerar o link de direcionamento para o W
 
 
 
-*Funcionalidade extra 1:* 
+*Funcionalidade extra 2:* 
 
 <p align="center">
   <img src="./src/imagens README/tela_mensagem_opcional.png" alt="Tela de mensagem padrão" width="300"/>
@@ -116,4 +116,4 @@ Opção de envio de mensagens padrão ao gerar o link de direcionamento para o W
 Esse projeto foi desenvolvido pelos alunos:
 * Emanuel alves de Souza - A2539217 - manuzin081922@gmail.com
 * Emilly Damasceno Walter - A2539233 - emillyw@alunos.utfpr.edu.br
-* Gustavo Freitas Naida - RA - gfnaida@gmail.com
+* Gustavo Freitas Naida - A2539276 - gfnaida@gmail.com
