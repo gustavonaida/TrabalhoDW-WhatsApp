@@ -76,19 +76,24 @@ O usuário é redirecinado ao próprio WhatsApp, com requisitos que preencheu ao
 ---
 
 ## Funcionalidades extras
-* Organização da Lista de Contatos através de cores, onde os contatos ficam salvos no banco de dados e podemos alterá-los dentro da Lista de Contatos, onde é possível organizar os contatos, agrupando-os através de cores previamente selecionadas. Essa funcionalidade foi implementada para permitir que o usuário organize seus contatos de forma visual e rápida, melhorando a usabilidade e tornando o sistema mais intuitivo.
-* Opção de envio de mensagens padrão ao gerar o link de direcionamento para o WhatsApp. Essa funcionalidade foi implementada para permitir que o usuário possa otimizar o seu tempo com prompts pré estabelecidos de mensagens comuns entre os clientes.
+* *Funcionalidade extra 1:* 
+Organização da Lista de Contatos através de cores, onde os contatos ficam salvos no banco de dados e podemos alterá-los dentro da Lista de Contatos, onde é possível organizar os contatos, agrupando-os através de cores previamente selecionadas. Essa funcionalidade foi implementada para permitir que o usuário organize seus contatos de forma visual e rápida, melhorando a usabilidade e tornando o sistema mais intuitivo.
+A partir da organização por cores,também podemos gerar links com mensagens para mais de um contato salvo na Lista de Contatos.
+* *Funcionalidade extra 2:* 
+Opção de envio de mensagens padrão ao gerar o link de direcionamento para o WhatsApp. Essa funcionalidade foi implementada para permitir que o usuário possa otimizar o seu tempo com prompts pré estabelecidos de mensagens comuns entre os clientes.
 
 #### Telas das funcionalidades extras
-Organização de contatos por cor:
+*Funcionalidade extra 1:* 
 <p align="center">
   <img src="./src/imagens README/telas2.png" alt="Tela principal" width="400"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="./src/imagens README/tela_lista.png" alt="Tela de lista" width="300"/>
+  <img src="./src/imagens README/tela_links_gerados.png" alt="Tela de lista" width="500"/>
 </p>
 
 
-Envio de mensagens padrão:
+
+*Funcionalidade extra 1:* 
 
 <p align="center">
   <img src="./src/imagens README/tela_mensagem_opcional.png" alt="Tela de mensagem padrão" width="300"/>
