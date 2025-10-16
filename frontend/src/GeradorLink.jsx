@@ -2,6 +2,9 @@ import styles from "./GeradorLink.module.css";
 import React, { useState, useEffect, useRef } from "react";
 import { BookCopy, MessageCircle } from "lucide-react";
 
+// INTEGRAÇÃO AO SUPABASE E LOCALHOST
+import { saveGeneratedLink } from "./supabaseClient";
+
 export default function GeradorLink({ numeroSelecionado }) {
   //-------------- Aba de Perguntas Rápidas --------------------
   const [showPopUp, setShowPopUp] = useState(false);
@@ -88,6 +91,9 @@ export default function GeradorLink({ numeroSelecionado }) {
     }`;
 
     setLinks((novoLink) => [...novoLink, url]);
+    // LOCALHOST E SUPA
+    saveGeneratedLink(telephone, menssage, url);
+
   };
 
   //---------Copiar Link------------

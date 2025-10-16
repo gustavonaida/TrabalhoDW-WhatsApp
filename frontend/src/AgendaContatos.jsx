@@ -1,6 +1,10 @@
 import styles from "./AgendaContatos.module.css";
 import { useState } from "react";
 
+// INTEGRAÇÃO AO SUPABASE E LOCALHOST
+import { useEffect } from "react";
+import { supabase, addContact, deleteContact } from "./supabaseClient";
+
 export default function AgendaContatos({ contatos, setContatos, setNumeroSelecionado }) {
   const [nome, setNome] = useState("");
   const [editIndex, setEditIndex] = useState(null);
@@ -11,6 +15,20 @@ export default function AgendaContatos({ contatos, setContatos, setNumeroSelecio
 
   //-------------- Formatação: Telefone ------------------------
   const [numero, setNumero] = useState("");
+  // 🔹 Buscar contatos do Supabase ao carregar
+useEffect(() => {
+  async function carregarContatos() {
+    const { data, error } = await supabase.from("contacts").select("*");
+    if (error) console.error("Erro ao buscar contatos:", error);
+    else setContatos(data.map(c => ({
+      nome: c.name,
+      numero: c.phone_number,
+      cor: "#1BC257" // usa cor padrão pois não existe no banco
+    })));
+  }
+  carregarContatos();
+}, []);
+
 
   const formatInputNumero = (valor_digitado) => {
     const number = valor_digitado.replace(/\D/g, "").slice(0, 11);
@@ -56,6 +74,8 @@ export default function AgendaContatos({ contatos, setContatos, setNumeroSelecio
     } else {
       setContatos([...contatos, novoContato]);
     }
+    //LOCALHOST
+    addContact(nome, numero);
 
     setCorPadrao("#1BC257");
     setNome("");
@@ -72,9 +92,21 @@ export default function AgendaContatos({ contatos, setContatos, setNumeroSelecio
   const handleDeletar = (index) => {
     const atualizados = contatos.filter((_, i) => i !== index);
     setContatos(atualizados);
+
+    // LOCALHOST E SUPABASE
+    async function deletarDoSupabase(numero) {
+    const { data, error } = await supabase
+    .from("contacts")
+    .select("id")
+    .eq("phone_number", numero)
+    .single();
+    if (!error && data) await deleteContact(data.id);
+}
+  deletarDoSupabase(contatos[index].numero);
+
   };
 
-  // 🚀 Atualizado: envia número para o GeradorLink ao invés de abrir o WhatsApp
+  // Envia número para o GeradorLink ao invés de abrir o WhatsApp
   const handleMensagem = (numero) => {
     const cleaned = numero.replace(/\D/g, "");
     if (cleaned.length < 11) {
