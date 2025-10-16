@@ -1,11 +1,10 @@
 import { createClient } from '@supabase/supabase-js'
+
 const supabaseUrl = "https://TrabalhoDW-WhatsApp.supabase.co"
 const supabaseKey = "ouykaqrqvubazxfeynhb"
-
 export const supabase = createClient(supabaseUrl, supabaseKey)
-//-------------- criar contato
-import { supabase } from './supabaseClient'
 
+//-------------- criar contato
 export async function addContact(name, phone) {
   const { data, error } = await supabase
     .from('contacts')
@@ -25,10 +24,10 @@ export async function deleteContact(id) {
     else console.log('Contato excluído!')
   }
 //-------------- salvar links gerados
- export async function saveGeneratedLink(phone, message, url) {
+ export async function saveGeneratedLink(phone, message, link) {
   const { data, error } = await supabase
   .from('generated_links')
-  .insert([{ phone_number: phone, message, generated_url: url }])
+  .insert([{ phone_number: phone, message, generated_url: link }])
 
 if (error) console.error('Erro ao salvar link:', error)
 else console.log('Link salvo com sucesso:', data)
