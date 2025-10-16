@@ -82,7 +82,7 @@
   border-radius: 8px;
   padding: 10px 10px 0px 10px;
 
-  height: 70vh;
+  height: 85vh;
 
   display: flex;
   flex-direction: column;
@@ -135,7 +135,7 @@ h1 {
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1);
   color: black;
   padding: 10px;
-  margin-bottom: 20px;
+  
 
   width: 100%;
   min-height: 14vh;
@@ -202,3 +202,118 @@ h1 {
 .InputMensageColor5{
   background-color: #E5A50A;
 }
+
+.buttonPrepar {
+  height: 40px;
+  width: 100%;
+  margin-bottom: 20px;
+
+  border: none;
+  border-radius: 5px;
+
+  color: aliceblue;
+  background-color: #1bc257;
+
+  cursor: pointer;
+
+  margin-bottom: 20px;
+}
+
+.buttonPrepar:hover {
+  transform: scale(1.03);
+}
+
+/* Links Gerados */
+.popupOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Caixa do PopUp */
+.popupContent {
+  background: white;
+  color: #222;
+  border-radius: 12px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: aparecer 0.3s ease;
+}
+
+
+
+.popupContent ul {
+  text-align: left;
+  max-height: 300px;
+  padding: 0;
+  list-style: none;
+}
+
+.popupContent a {
+  color: #1a5fb4;
+  text-decoration: none;
+}
+
+.popupContent a:hover {
+  text-decoration: underline;
+}
+
+.closePopup {
+  color: #A51D2D;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+
+@keyframes aparecer {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 1rem;
+  
+}
+
+.ContainerListaLinks{
+  border: solid 1px  #3a3a3a;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #27cc7c52;
+
+  overflow-y: scroll;
+  scrollbar-width: none;
+  max-height: 300px;
+}
+
+.ListaLinks{
+  background-color: white;
+  border: solid 1px  #3a3a3a;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  
+}
+
+
