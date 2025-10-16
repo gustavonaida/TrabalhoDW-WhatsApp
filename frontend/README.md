@@ -1,6 +1,6 @@
 <h1 id="whatsapp-hub"><img src="./src/imagens README/icone_whats.png" alt="" width="60"/> WhatsApp Hub</h1>
 
-Este projeto, realizado pelos alunos: Emanuel Alves, Emilly Damasceno e Gustavo Naida, como atividade avaliativa para obtenção de nota parcial no 3° bimestre da discliplina de Desenvolvimento Web 2 do curso Técnico Integrado em Informática para a Internet.
+Este projeto foi desenvolvido por alunos do 3° ano do curso Técnico Integrado em Informática para a Internet, como atividade avaliativa para obtenção de nota parcial no 3° bimestre da discliplina de Desenvolvimento Web 2.
 
 O mesmo têm por objetivo **gerar links personalizados que redirecionam os usuários diretamente ao início de conversas no WhatsApp, organizar e salvar contatos**, facilitando a comunicação entre clientes e prestadores de serviço, ou qualquer pessoa que deseje compartilhar um link direto de contato.
 

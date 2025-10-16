@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { BookCopy, MessageCircle } from "lucide-react";
 
 // INTEGRAÇÃO AO SUPABASE E LOCALHOST
-import { saveGeneratedLink } from "./supabaseClient";
+import { supabase, saveGeneratedLink } from "./supabaseClient";
 
 export default function GeradorLink({ numeroSelecionado }) {
   //-------------- Aba de Perguntas Rápidas --------------------
@@ -75,7 +75,25 @@ export default function GeradorLink({ numeroSelecionado }) {
   const [menssage, setMenssage] = useState("");
   const [buttonScroll, setButtonScroll] = useState(false);
 
-  const generateLink = () => {
+  // para o link não ser apagado quando a página recarregar
+useEffect(() => {
+  async function fetchLinks() {
+    const { data, error } = await supabase
+      .from("generated_links")
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (error) {
+      console.error("Erro ao carregar links do Supabase:", error);
+    } else {
+      // Atualiza o estado com os links do banco
+      setLinks(data.map((item) => item.generated_url));
+    }
+  }
+  fetchLinks();
+}, []);
+
+
+  const generatedLink = () => {
     if (!telephone) {
       alert("Adicione um número de telefone");
       return;
@@ -162,7 +180,7 @@ export default function GeradorLink({ numeroSelecionado }) {
             </>
           )}
 
-          <button className={styles.buttonPrepar} onClick={generateLink}>
+          <button className={styles.buttonPrepar} onClick={generatedLink}>
             Preparar Mensagem
           </button>
         </div>

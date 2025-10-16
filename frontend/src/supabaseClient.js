@@ -29,9 +29,17 @@ export async function deleteContact(id) {
 //-------------- salvar links gerados
 export async function saveGeneratedLink(phone, message, link) {
   const { data, error } = await supabase
-    .from('generated_links')
-    .insert([{ phone_number: phone, message, generated_url: link }])
+    .from('generated_links') 
+    .insert([{ 
+      phone_number: phone, 
+      message, 
+      generated_url: link 
+    }])
 
-  if (error) console.error('Erro ao salvar link:', error)
-  else console.log('Link salvo com sucesso:', data)
+  if (error) {
+    console.error('Erro ao salvar link:', error)
+    alert("Erro ao salvar link: " + error.message)
+  } else {
+    console.log('Link salvo com sucesso:', data)
+  }
 }
